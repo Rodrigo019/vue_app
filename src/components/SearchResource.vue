@@ -1,6 +1,6 @@
 <template>
     <input 
-        class="form-control form-control-dark w-100" 
+        class="form-control" 
         type="text" 
         placeholder="Search" 
         aria-label="Search" 
@@ -26,3 +26,9 @@ export default defineComponent({
     }
 });
 </script>
+
+<style>
+.form-control {
+    border-radius: 0;
+}
+</style>
