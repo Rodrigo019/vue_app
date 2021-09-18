@@ -28,20 +28,8 @@ export default defineComponent({
     },
     async created() {
         try {
-            //var response = await MenuService.getAll();
-            //this.menus = response;
-            this.menus = [
-                {
-                    name: 'Home',
-                    icon: '',
-                    url: '/'
-                },
-                {
-                    name: 'About',
-                    icon: '',
-                    url: '/about'
-                }
-            ];
+            var response = await MenuService.getAll();
+            this.menus = response;
         } catch (error) {
             console.log(error);
         }
