@@ -1,6 +1,4 @@
 import User from "@/interfaces/user";
-import { resolveComponent } from "@vue/runtime-core";
-
 
 class UserService {
 
@@ -23,10 +21,18 @@ class UserService {
 
     get(id:number) : Promise<User> {
         return new Promise((resolve,reject) => {
-            var user: User | undefined = this.users.find(x => x.id === id);
+            const user: User | undefined = this.users.find(x => x.id === id);
             if (user) resolve(user);
-            else reject('User not found');
+            else reject('User not found!');
         })
+    }
+
+    getByCredentials(email: string, password: string) : Promise<User> {
+        return new Promise((resolve,reject) => {
+            const user = this.users.find(x => x.email === email && x.password === password);
+            if (user) resolve(user);
+            else reject('User not found!');
+        });
     }
 }
 
