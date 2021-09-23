@@ -9,7 +9,29 @@ class UserService {
             sname: 'Belo',
             email: 'rodrigootario019@gmail.com',
             password: '1234',
-            menus: []
+            enable: true,
+            menus: [
+                {
+                    name: 'Home',
+                    icon: '',
+                    url: '/'
+                },
+                {
+                    name: 'About',
+                    icon: '',
+                    url: '/about'
+                },
+                {
+                    name: 'Users',
+                    icon: '',
+                    url: '/users'
+                },
+                {
+                    name: 'Create new User',
+                    icon: '',
+                    url: '/users/0'
+                }
+            ]
         }
     ];
 

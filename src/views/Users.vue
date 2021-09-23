@@ -6,6 +6,7 @@
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
+            <th>Enable</th>
         </thead>
         <tbody>
             <tr 
@@ -18,6 +19,10 @@
                 <td>{{user.fname}}</td>
                 <td>{{user.sname}}</td>
                 <td>{{user.email}}</td>
+                <td>
+                    <span v-if="user.enable" class="badge bg-success">User enable</span>
+                    <span v-if="!user.enable" class="badge bg-danger">User disabled</span>                    
+                </td>
                 <td>
                     <router-link :to="{ name: 'UsersCreate', params: { id: user.id } }">View</router-link>
                 </td>

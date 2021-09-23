@@ -6,5 +6,6 @@ export default interface User extends Base {
     sname: string;
     email: string;
     password: string;
+    enable: boolean;
     menus: Menu[];
 }
