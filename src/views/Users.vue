@@ -19,7 +19,7 @@
                 <td>{{user.sname}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary">View</button>
+                    <router-link :to="{ name: 'UsersCreate', params: { id: user.id } }">View</router-link>
                 </td>
             </tr>
         </tbody>

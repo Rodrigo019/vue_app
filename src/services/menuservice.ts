@@ -18,6 +18,11 @@ class MenuService {
             name: 'Users',
             icon: '',
             url: '/users'
+        },
+        {
+            name: 'Create new User',
+            icon: '',
+            url: '/users/0'
         }
     ]
 
