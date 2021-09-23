@@ -13,9 +13,7 @@
             <div class="modal-body">
                 <table class="table table-responsive table-hover">
                     <thead>
-                        <th>
-                            Name
-                        </th>
+                        <th>Name</th>
                     </thead>
                     <tbody>
                         <tr v-for="menu in this.menus" :key="menu.name">
@@ -35,7 +33,6 @@
 
 <script lang="ts">
 import Menu from '@/interfaces/menu'
-import User from '@/interfaces/user'
 import UserService from '@/services/userservice'
 import { defineComponent } from 'vue'
 

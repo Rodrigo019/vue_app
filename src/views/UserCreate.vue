@@ -1,8 +1,11 @@
 <template>
-    <form v-if="!this.ususerNotFounder">
+    <form v-if="this.userFound">
         <div v-if="this.id > 0" class="row">
-            <div class="col-2">
+            <div class="col-11">
                 <strong><h3># {{this.id}}</h3></strong>
+            </div>
+            <div class="col-1">
+                <router-link class="btn btn-primary" :to="{ name: 'Users' }">Back</router-link>
             </div>
         </div>
         <span v-if="this.id > 0 && this.user.enable" class="badge bg-success">User enable</span>
@@ -48,15 +51,14 @@
             </div>
         </div>
     </form>
-    <div class="row" v-if="this.id > 0">
+    <div class="row" v-if="this.userFound && this.id > 0">
         <div class="col-2 mt-2">
             <UserMenusModal :userId="this.user.id" />
         </div>
     </div>
-    <div v-if="this.userNotFound">
-        userNotFound
-    </div>
-    
+    <div v-if="!this.userFound">
+        <PageNotFound message="User not found!" urlBack="Users" />
+    </div>    
 </template>
 
 
@@ -66,31 +68,28 @@ import { defineComponent } from 'vue'
 import UserService from '@/services/userservice'
 import User from '@/interfaces/user';
 import UserMenusModal from '@/components/UserMenusModal.vue' 
+import PageNotFound from '@/components/PageNotFound.vue' 
 
 export default defineComponent({
     name: 'UserCreate',
     components: {
-        UserMenusModal
+        UserMenusModal,
+        PageNotFound
     },
     data() {
         return {
             id: 0,
             user: undefined as any,
-            userNotFound: false as boolean
+            userFound: true as boolean
         }
     },
     async created() {
         const id = this.$route.params['id'].toString();
         this.id = Number.parseInt(id);
-        console.log(this.id);
         if (this.id > 0) {
-            try {
-                const response = await this.getUser();
-                this.user = response as User;
-            } catch (error) {
-                console.log(error);
-                this.userNotFound = true;
-            }
+            const response = await this.getUser();
+            this.user = response as User;
+            this.userFound = true;
         } else {
             this.user = {}
         }
@@ -101,7 +100,7 @@ export default defineComponent({
                 const response = await UserService.get(this.id);
                 return response;                
             } catch (error) {
-                console.log(error);
+                this.userFound = false;
             }
         }
     }

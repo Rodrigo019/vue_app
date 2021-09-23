@@ -24,7 +24,7 @@
                     <span v-if="!user.enable" class="badge bg-danger">User disabled</span>                    
                 </td>
                 <td>
-                    <router-link :to="{ name: 'UsersCreate', params: { id: user.id } }">View</router-link>
+                    <router-link class="btn btn-primary" :to="{ name: 'UsersCreate', params: { id: user.id } }">View</router-link>
                 </td>
             </tr>
         </tbody>
